@@ -20,6 +20,18 @@
           "supported_platforms": [
             "kindlehf"
           ]
+        },
+        {
+          "url": "packages/audiobookshelf-sync/artifacts/audiobookshelf-sync_0.1.3_kindlehf.kpkg",
+          "version": [
+            0,
+            1,
+            3
+          ],
+          "dependencies": [],
+          "supported_platforms": [
+            "kindlehf"
+          ]
         }
       ]
     }
