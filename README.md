@@ -36,7 +36,7 @@ It runs as a small background service that starts at boot and uses about 10 MB o
 2. Copy it to your Kindle's `documents` folder over USB.
 3. Eject the Kindle and tap **Install Audiobookshelf Sync** in your library.
 
-It adds this project's KPM repository, installs the package, opens the setup screen, and deletes itself.
+It adds this project's KPM repository, installs the package, opens the setup screen, and deletes itself. The **Audiobookshelf Sync** item can take up to a minute to appear in your library.
 
 **Or by hand**, from the Kindle's search bar:
 

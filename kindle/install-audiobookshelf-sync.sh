@@ -34,6 +34,7 @@ echo "Installing Audiobookshelf Sync..."
 "$KPM" -y install "$PKG" || fail "Install failed. See github.com/josephyancey/abs-kindle-sync"
 
 echo "Done. Opening Audiobookshelf Sync to sign in..."
+echo "Its library item can take up to a minute to appear."
 rm -f "$SELF"
 sleep 2
 (sleep 2; lipc-set-prop com.lab126.appmgrd start "app://io.github.abskindlesync") >/dev/null 2>&1 </dev/null &

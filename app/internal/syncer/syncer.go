@@ -377,8 +377,10 @@ func (s *Syncer) checkLibraryItem() {
 	}
 	go func() {
 		defer s.itemCheck.Store(false)
-		for _, wait := range []time.Duration{8 * time.Second, 45 * time.Second} {
-			time.Sleep(wait)
+		// Check often at first so a dropped item comes back within seconds, then once more
+		// after the indexer has settled: 3, 6, 10, 15, 20, 30, 45 and 60 s after the change.
+		for _, wait := range []time.Duration{3, 3, 4, 5, 5, 10, 15, 15} {
+			time.Sleep(wait * time.Second)
 			if kindle.EnsureLibraryItem() {
 				log.Printf("library: the Audiobookshelf Sync item was missing from the library, indexed it again")
 			}

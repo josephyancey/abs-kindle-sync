@@ -11,4 +11,4 @@ cp -f "./Audiobookshelf Sync.sh" "/mnt/us/documents/Audiobookshelf Sync.sh"
 rm -rf ./abs-sync
 
 sh "$DEST/bin/abs-install.sh" restart
-echo "Audiobookshelf Sync: installed. Open Audiobookshelf Sync from your library to sign in."
+echo "Audiobookshelf Sync: installed. Open Audiobookshelf Sync from your library to sign in (it can take a minute to appear)."
