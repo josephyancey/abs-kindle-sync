@@ -1,0 +1,12 @@
+{
+	"items": [
+	{
+		"name": "ABS Test",
+		"priority": -3,
+		"items": [
+		{ "name": "Start keep-alive + network report", "priority": 1, "action": "bin/start.sh", "exitmenu": true },
+		{ "name": "Stop keep-alive", "priority": 2, "action": "bin/stop.sh", "exitmenu": true }
+		]
+	}
+	]
+}

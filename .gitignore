@@ -1,0 +1,15 @@
+# Built helper
+kindle/bin/tapwait
+
+# Relay keys and runtime files (never commit keys)
+dev/relay/authorized_keys
+dev/relay/kindle_tunnel*
+dev/relay/*.dropbear
+# Built app
+app/abs-sync
+app/map.json
+# KPM package build output
+dist/
+
+# Private handoff notes (a separate private repo, cloned here)
+notes/

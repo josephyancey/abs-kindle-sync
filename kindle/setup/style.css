@@ -1,0 +1,17 @@
+/* E-ink: black on white, large touch targets, no animation */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Amazon Ember", "Helvetica", sans-serif; color: #000; background: #fff; font-size: 30px; line-height: 1.35; }
+.page { padding: 28px 36px 60px; }
+h1 { font-size: 44px; margin: 10px 0 24px; }
+h2 { font-size: 34px; margin: 40px 0 14px; border-top: 2px solid #000; padding-top: 24px; }
+label { display: block; font-weight: bold; margin: 22px 0 8px; }
+input[type=text], input[type=password] { width: 100%; font-size: 32px; padding: 14px; border: 3px solid #000; border-radius: 8px; background: #fff; }
+button { display: block; width: 100%; font-size: 34px; padding: 22px; margin-top: 30px; border: 3px solid #000; border-radius: 10px; background: #fff; color: #000; font-weight: bold; }
+button.primary { background: #000; color: #fff; }
+button[disabled] { opacity: 0.5; }
+.hint { font-size: 24px; margin-top: 14px; }
+.message { border: 3px solid #000; border-radius: 10px; padding: 18px; margin: 10px 0 20px; font-weight: bold; }
+.account { font-size: 28px; }
+.status { font-size: 28px; margin-top: 10px; }
+.list label, label.check { font-weight: normal; display: block; padding: 18px 0; border-bottom: 1px solid #000; margin: 0; }
+.list input, label.check input { width: 34px; height: 34px; margin-right: 18px; vertical-align: middle; }

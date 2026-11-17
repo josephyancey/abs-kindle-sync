@@ -1,0 +1,7 @@
+# Copy to /mnt/us/abs-test/tunnel.conf on the Kindle. See dev/README.md.
+RELAY_HOST=192.168.1.10
+# Optional: several relays, one tunnel each (overrides RELAY_HOST)
+#RELAY_HOSTS="192.168.1.10 192.168.1.11"
+RELAY_PORT=2222
+RELAY_USER=kindle
+RELAY_FORWARD_PORT=2200

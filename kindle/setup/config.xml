@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<widget id="io.github.abskindlesync" version="1.0" viewmodes="application" xmlns="http://www.w3.org/ns/widgets"
+    xmlns:kindle="http://kindle.amazon.com/ns/widget-extensions">
+    <name xml:lang="en">Audiobookshelf Sync</name>
+    <description xml:lang="en">Audiobookshelf sync setup</description>
+    <content src="index.html" />
+
+    <!-- The screen talks to the abs-sync service on 127.0.0.1 -->
+    <kindle:permissions>
+        <kindle:permission name="local-port-access" />
+    </kindle:permissions>
+    <kindle:chrome>
+        <kindle:asset key="configureSearchBar" value="system" />
+    </kindle:chrome>
+    <kindle:gestures>
+        <kindle:param name="tap" value="yes" properties="fire_on_tap:1 max_updown_delta:0" />
+        <kindle:param name="swipe" value="yes" />
+    </kindle:gestures>
+    <feature name="http://kindle.amazon.com/apis" required="true">
+        <param name="appmgr" value="yes" />
+        <param name="chrome" value="yes" />
+        <param name="messaging" value="yes" />
+        <param name="net" value="yes" />
+        <param name="gestures" value="yes" />
+    </feature>
+    <kindle:messaging>
+        <kindle:app name="com.lab126.chromebar" value="yes" />
+        <kindle:app name="com.lab126.pillow" value="yes" />
+    </kindle:messaging>
+    <kindle:settings>
+        <kindle:setting name="internetRequired" value="no" />
+        <kindle:setting name="saveContext" value="no" />
+    </kindle:settings>
+</widget>

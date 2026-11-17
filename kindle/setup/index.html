@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Audiobookshelf Sync</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <p id="message" class="message" style="display:none"></p>
+
+        <section id="signin" style="display:none">
+            <h1>Sign in to Audiobookshelf</h1>
+            <label for="server">Server address</label>
+            <input id="server" type="text" placeholder="audiobooks.example.com" autocapitalize="off" autocorrect="off">
+            <label for="username">Username</label>
+            <input id="username" type="text" autocapitalize="off" autocorrect="off">
+            <label for="password">Password</label>
+            <input id="password" type="password">
+            <button id="signin-button" class="primary">Sign in</button>
+            <p class="hint">Your password is only used to sign in. It isn't stored on the Kindle.</p>
+        </section>
+
+        <section id="settings" style="display:none">
+            <h1>Audiobookshelf</h1>
+            <p id="account" class="account"></p>
+            <p id="sync-status" class="status"></p>
+            <button id="sync-button" class="primary">Sync now</button>
+
+            <h2>Libraries to sync</h2>
+            <div id="libraries" class="list"></div>
+
+            <h2>Reading position</h2>
+            <label class="check"><input id="ask" type="checkbox"> Ask before moving to the Audiobookshelf position</label>
+            <p class="hint">When this is off, books move to your latest Audiobookshelf position by themselves.</p>
+
+            <button id="signout-button" class="secondary">Sign out</button>
+        </section>
+
+        <section id="offline" style="display:none">
+            <h1>Audiobookshelf Sync isn't running</h1>
+            <p>Close this screen and open Audiobookshelf Sync from your library again.</p>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

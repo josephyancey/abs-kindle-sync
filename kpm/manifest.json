@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "id": "audiobookshelf-sync",
+  "name": "Audiobookshelf Sync",
+  "author": "Joseph Yancey",
+  "description": "Syncs books and reading position between Audiobookshelf and Amazon's own Kindle reader. Alpha.",
+  "version": [
+    0,
+    1,
+    2
+  ],
+  "dependencies": [],
+  "supported_platforms": [
+    "kindlehf"
+  ]
+}
