@@ -7,6 +7,10 @@ SITE_DIR is a checkout of the gh-pages branch, which GitHub Pages serves at
 https://josephyancey.github.io/abs-kindle-sync/. Each .kpkg given is copied to
 packages/<id>/artifacts/. Then manifest.json (KPM manifest version 2) and a small index.html are
 rebuilt from every package already there, so older versions stay installable.
+
+Artifacts point at the GitHub release files (releases/download/v<version>/<file>), not at the
+Pages copies, so KPM installs and upgrades show up in the release download counts. Attach each
+.kpkg to its v<version> release before pushing the manifest. KPM follows the redirect.
 """
 import html
 import json
@@ -57,7 +61,7 @@ def main() -> None:
         if all(m["version"] > a["version"] for a in p["artifacts"]):
             p.update(name=m["name"], author=m["author"], description=m["description"])
         p["artifacts"].append({
-            "url": kpkg.relative_to(site).as_posix(),
+            "url": f"{SOURCE}/releases/download/v{'.'.join(map(str, m['version']))}/{kpkg.name}",
             "version": m["version"],
             "dependencies": m.get("dependencies", []),
             "supported_platforms": m.get("supported_platforms", []),
