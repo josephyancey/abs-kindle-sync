@@ -10,7 +10,7 @@
       "description": "Syncs books and reading position between Audiobookshelf and Amazon's own Kindle reader. Alpha.",
       "artifacts": [
         {
-          "url": "packages/audiobookshelf-sync/artifacts/audiobookshelf-sync_0.1.2_kindlehf.kpkg",
+          "url": "https://github.com/josephyancey/abs-kindle-sync/releases/download/v0.1.2/audiobookshelf-sync_0.1.2_kindlehf.kpkg",
           "version": [
             0,
             1,
@@ -22,7 +22,7 @@
           ]
         },
         {
-          "url": "packages/audiobookshelf-sync/artifacts/audiobookshelf-sync_0.1.3_kindlehf.kpkg",
+          "url": "https://github.com/josephyancey/abs-kindle-sync/releases/download/v0.1.3/audiobookshelf-sync_0.1.3_kindlehf.kpkg",
           "version": [
             0,
             1,
