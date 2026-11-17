@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "id": "abskindlesync",
+  "name": "Audiobookshelf Sync",
+  "description": "Audiobookshelf Sync for Amazon's own Kindle reader.",
+  "packages": {
+    "audiobookshelf-sync": {
+      "name": "Audiobookshelf Sync",
+      "author": "Joseph Yancey",
+      "description": "Syncs books and reading position between Audiobookshelf and Amazon's own Kindle reader. Alpha.",
+      "artifacts": [
+        {
+          "url": "packages/audiobookshelf-sync/artifacts/audiobookshelf-sync_0.1.2_kindlehf.kpkg",
+          "version": [
+            0,
+            1,
+            2
+          ],
+          "dependencies": [],
+          "supported_platforms": [
+            "kindlehf"
+          ]
+        }
+      ]
+    }
+  }
+}
