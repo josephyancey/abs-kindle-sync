@@ -7,7 +7,8 @@ DEST=/mnt/us/abs-sync
 mkdir -p "$DEST"
 cp -rf ./abs-sync/bin ./abs-sync/setup ./abs-sync/upstart "$DEST/"
 chmod +x "$DEST/bin/abs-sync" "$DEST/bin/tapwait" "$DEST/bin/abs-prompt.sh" "$DEST/bin/abs-install.sh"
-cp -f "./Audiobookshelf Sync.sh" "/mnt/us/documents/Audiobookshelf Sync.sh"
+# Only when it changed: rewriting it makes the library index it again, which can drop it for a while
+cmp -s "./Audiobookshelf Sync.sh" "/mnt/us/documents/Audiobookshelf Sync.sh" || cp -f "./Audiobookshelf Sync.sh" "/mnt/us/documents/Audiobookshelf Sync.sh"
 rm -rf ./abs-sync
 
 sh "$DEST/bin/abs-install.sh" restart

@@ -88,8 +88,13 @@ func (s *Syncer) Run(ctx context.Context) {
 	defer libraryTick.Stop()
 	jumpTick := time.NewTicker(time.Second)
 	defer jumpTick.Stop()
+	// The library can drop the item long after a rescan starts while the indexer works through a
+	// big batch of new books, so check it now and then as well as after library changes
+	itemTick := time.NewTicker(2 * time.Minute)
+	defer itemTick.Stop()
 
 	go s.syncLibrary()
+	s.checkLibraryItem() // an install or upgrade has just rescanned the library
 	s.State.Mu.Lock()
 	if path := kindle.OpenBook(); path != "" {
 		s.open = s.State.BookByPath(path)
@@ -106,6 +111,8 @@ func (s *Syncer) Run(ctx context.Context) {
 			go s.syncLibrary()
 		case <-s.SyncRequests:
 			go s.syncLibrary()
+		case <-itemTick.C:
+			s.checkLibraryItemOnce()
 		case <-jumpTick.C:
 			s.State.Mu.Lock()
 			s.retryJump()
@@ -371,6 +378,19 @@ func (s *Syncer) pushBook(book *store.Book) {
 // its entry; the re-add fails when the indexer is busy (e.g. with books we're downloading), and
 // the item vanishes. Checks run a few seconds after a rescan and again later, once the indexer
 // has settled.
+// checkLibraryItemOnce re-adds the library item if it's missing, unless a check is already running.
+func (s *Syncer) checkLibraryItemOnce() {
+	if !s.itemCheck.CompareAndSwap(false, true) {
+		return
+	}
+	go func() {
+		defer s.itemCheck.Store(false)
+		if kindle.EnsureLibraryItem() {
+			log.Printf("library: the Audiobookshelf Sync item was missing from the library, indexed it again")
+		}
+	}()
+}
+
 func (s *Syncer) checkLibraryItem() {
 	if !s.itemCheck.CompareAndSwap(false, true) {
 		return
