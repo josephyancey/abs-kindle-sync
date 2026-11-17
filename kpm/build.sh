@@ -8,8 +8,9 @@ PKG=dist/package
 rm -rf "$PKG"
 mkdir -p "$PKG/abs-sync/bin"
 
+VERSION=$(python3 -c 'import json; print(".".join(map(str, json.load(open("kpm/manifest.json"))["version"])))')
 MSYS_NO_PATHCONV=1 docker run --rm -v "$ROOT/app:/src" -w /src -e CGO_ENABLED=0 -e GOOS=linux -e GOARCH=arm -e GOARM=7 \
-	golang:1.26-bookworm go build -trimpath -ldflags="-s -w" -o abs-sync ./cmd/abs-sync
+	golang:1.26-bookworm go build -trimpath -ldflags="-s -w -X main.version=$VERSION" -o abs-sync ./cmd/abs-sync
 sh helper/build.sh >/dev/null
 
 cp app/abs-sync kindle/bin/tapwait kindle/bin/abs-prompt.sh kindle/bin/abs-install.sh "$PKG/abs-sync/bin/"

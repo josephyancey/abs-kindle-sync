@@ -15,3 +15,4 @@ button[disabled] { opacity: 0.5; }
 .status { font-size: 28px; margin-top: 10px; }
 .list label, label.check { font-weight: normal; display: block; padding: 18px 0; border-bottom: 1px solid #000; margin: 0; }
 .list input, label.check input { width: 34px; height: 34px; margin-right: 18px; vertical-align: middle; }
+.version { font-size: 22px; margin-top: 40px; text-align: center; }

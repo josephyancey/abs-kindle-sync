@@ -57,6 +57,8 @@ func main() {
 		err = run(st, base)
 	case "status":
 		err = status(st)
+	case "version":
+		fmt.Println(version)
 	default:
 		usage()
 	}
@@ -66,11 +68,14 @@ func main() {
 	}
 }
 
+// version is the package version, set at build time by kpm/build.sh (-X main.version=...).
+var version = "dev"
+
 // exitStorageLeaving is a non-zero exit, so the boot job restarts abs-sync once USB drive mode ends.
 const exitStorageLeaving = 75
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: abs-sync login <server> <username> <password> | sync | run | status")
+	fmt.Fprintln(os.Stderr, "usage: abs-sync login <server> <username> <password> | sync | run | status | version")
 	os.Exit(2)
 }
 
@@ -152,7 +157,7 @@ func run(st *store.Store, base string) error {
 			log.Printf("setup API: %v", err)
 		}
 	}()
-	log.Printf("abs-sync starting (signed in: %v)", cfg.Server != "" && cfg.Username != "")
+	log.Printf("abs-sync %s starting (signed in: %v)", version, cfg.Server != "" && cfg.Username != "")
 	svc.restart()
 	<-ctx.Done()
 	svc.stopSyncer()
@@ -232,6 +237,7 @@ func (s *service) Status() web.Status {
 		LastResult:    s.lastResult,
 		LastError:     s.lastError,
 		AskBeforeJump: s.cfg.AskBeforeJump,
+		Version:       version,
 	}
 	if !s.lastSync.IsZero() {
 		st.LastSync = s.lastSync.UnixMilli()

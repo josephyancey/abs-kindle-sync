@@ -41,6 +41,7 @@ type Status struct {
 	LastResult    string `json:"last_result"`
 	LastError     string `json:"last_error"`
 	AskBeforeJump bool   `json:"ask_before_jump"`
+	Version       string `json:"version"`
 }
 
 type library struct {

@@ -89,6 +89,7 @@ function refresh() {
   call("GET", "status", null, function(err, st) {
     if (err === "offline") return show("offline");
     if (err) return message(err);
+    $("version").textContent = st.version ? "Audiobookshelf Sync " + st.version : "";
     if (!st.signed_in) {
       show("signin");
       if (st.server) $("server").value = st.server;
