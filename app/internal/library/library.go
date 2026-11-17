@@ -120,8 +120,21 @@ func syncItem(client *abs.Client, cfg *store.Config, st *store.State, s *store.S
 	needMap := ef != nil && (!book.HasMap || book.EpubIno != ef.Ino || book.EpubMtime != ef.Metadata.MtimeMs)
 	st.Mu.Unlock()
 
-	if _, err := os.Stat(path); err != nil {
+	fi, err := os.Stat(path)
+	if err != nil {
 		changed = true
+	} else if changed && book.KindleIno == "" && fi.Size() == kf.Metadata.Size {
+		// A book this app hasn't recorded is already there, the same size as the one in
+		// Audiobookshelf: left behind by an uninstall, or the state was lost. Keep it.
+		log.Printf("library: %q is already on the Kindle, keeping it", it.Title())
+		st.Mu.Lock()
+		book.KindleIno, book.KindleMtime = kf.Ino, kf.Metadata.MtimeMs
+		_ = s.SaveState(st)
+		st.Mu.Unlock()
+		changed = false
+		if isNew {
+			res.Added++
+		}
 	}
 	if changed {
 		log.Printf("library: downloading %q", it.Title())

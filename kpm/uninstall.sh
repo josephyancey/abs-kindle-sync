@@ -13,6 +13,10 @@ sqlite3 /var/local/appreg.db <<'SQL'
 DELETE FROM properties WHERE handlerId='io.github.abskindlesync';
 DELETE FROM handlerIds WHERE handlerId='io.github.abskindlesync';
 SQL
-rm -rf /var/local/mesquite/abs-sync /var/local/abs-sync /mnt/us/abs-sync
+rm -rf /var/local/mesquite/abs-sync /var/local/abs-sync
+# Keep the book list and position maps next to the books left in the library, so a reinstall
+# doesn't download and map every book again. The sign-in is removed.
+rm -rf /mnt/us/abs-sync/bin /mnt/us/abs-sync/setup /mnt/us/abs-sync/upstart
+rm -f /mnt/us/abs-sync/config.json /mnt/us/abs-sync/abs-sync.log
 rm -f "/mnt/us/documents/Audiobookshelf Sync.sh"
-echo "Audiobookshelf Sync: removed. Synced books were left in your library."
+echo "Audiobookshelf Sync: removed. Synced books were left in your library; delete documents/Audiobookshelf and the abs-sync folder to remove them too."

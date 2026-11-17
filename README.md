@@ -53,7 +53,7 @@ Then open **Audiobookshelf Sync** from your library. Enter your server address, 
 ## Update and uninstall
 
 - **Update:** `;kpm upgrade` (upgrades everything installed from a repository) or `;kpm install audiobookshelf-sync`. Your sign-in and settings are kept.
-- **Uninstall:** `;kpm uninstall audiobookshelf-sync`. This removes the service, the boot job, the setup screen, and the sign-in. Books it synced stay in your library; delete the `documents/Audiobookshelf` folder to remove them.
+- **Uninstall:** `;kpm uninstall audiobookshelf-sync`. This removes the service, the boot job, the setup screen, and the sign-in. Books it synced stay in your library, along with the list of synced books and their position maps (the `abs-sync` folder), so reinstalling picks up where it left off without downloading everything again. To remove everything, delete the `documents/Audiobookshelf` and `abs-sync` folders.
 
 ## Good to know
 
