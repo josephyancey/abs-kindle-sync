@@ -32,6 +32,18 @@
           "supported_platforms": [
             "kindlehf"
           ]
+        },
+        {
+          "url": "https://github.com/josephyancey/abs-kindle-sync/releases/download/v0.1.4/audiobookshelf-sync_0.1.4_kindlehf.kpkg",
+          "version": [
+            0,
+            1,
+            4
+          ],
+          "dependencies": [],
+          "supported_platforms": [
+            "kindlehf"
+          ]
         }
       ]
     }
